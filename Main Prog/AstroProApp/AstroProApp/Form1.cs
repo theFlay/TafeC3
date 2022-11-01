@@ -20,8 +20,8 @@ namespace AstroProApp
 {
     public partial class Form1 : Form
     {
+        int[] dataArray = new int[24];
         //set empty array with length of 24
-        private int[] dataArray = new int[24];
 
         public Form1()
         {
@@ -60,8 +60,52 @@ namespace AstroProApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            int[] dataArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            int key = int.Parse(textBoxMain.Text);
 
+            //Call the function and store the results in a variable
+            bool found = BinarySearchDisplay(dataArray, key, out int index);
+
+            if (found)
+            {
+                MessageBox.Show($"Found. Index = {index} Value = {dataArray[index]}");
+            }
+            else
+            {
+                MessageBox.Show("Not Found.");
+            }
         }
+        /// <summary>
+        /// Binary Search Method.
+        /// </summary>
+        /// <param name="myArray">The array of values.</param>
+        /// <param name="key">The key to search for.</param>
+        /// <param name="index">The array index if key was found, -1 otherwise.</param>
+        /// <returns>true if key found, false otherwise.</returns>
+        public static bool BinarySearchDisplay(int[] myArray, int key, out int index)
+        {
+            int minIndex = 0;
+            int maxIndex = myArray.Length - 1;
+            index = -1;
+            while (minIndex <= maxIndex)
+            {
+                index = (minIndex + maxIndex) / 2;
+                if (key == myArray[index])
+                {
+                    return true;
+                }
+                else if (key < myArray[index])
+                {
+                    maxIndex = index - 1;
+                }
+                else
+                {
+                    minIndex = index + 1;
+                }
+            }
+            return false;
+        }
+
 
         private void textBoxMain_TextChanged(object sender, EventArgs e)
         {
