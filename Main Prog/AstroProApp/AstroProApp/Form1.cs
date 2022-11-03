@@ -47,14 +47,15 @@ namespace AstroProApp
         private void buttonSort_Click(object sender, EventArgs e)
         {
             #region
+            listBoxMain.Items.Clear();
             //initial variables
             int tempBubble = 0;
 
             //sets index for first number
-            for ( int left = 0; left < dataArray.Length; left++ )
+            for ( int left = 0; left < dataArray.Length -1; left++ )
             {
                 //sets index for second number
-                for (int right = 0; right < dataArray.Length; right++ )
+                for (int right = 0; right < dataArray.Length -1; right++ )
                 {
                     //compares the two
                     if (dataArray[right] < dataArray[right +1])
@@ -65,6 +66,10 @@ namespace AstroProApp
                         dataArray[right] = tempBubble;
                     }
                 }
+            }
+            foreach( int f in dataArray)
+            {
+                listBoxMain.Items.Add(f);
             }
             #endregion
         }
@@ -123,6 +128,11 @@ namespace AstroProApp
         }
 
         private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
 
         }
