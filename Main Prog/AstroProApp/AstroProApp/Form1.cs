@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 // Peter Halligan, BigBooleans, Sprint One
 // Date: 27/10/22
@@ -26,11 +27,21 @@ namespace AstroProApp
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void buttonGen_Click(object sender, EventArgs e)
         {
+            //clears list box and sets a range for random
+            listBoxMain.Items.Clear();
+            Random randNum = new Random();
 
+            //loops array and sets each index as a number then puts in in listbox
+            for (int i = 0; i < dataArray.Length; i++)
+            {
+                dataArray[i] = randNum.Next(0, 101);
+                listBoxMain.Items.Add(dataArray[i]);
+            }
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
@@ -60,7 +71,6 @@ namespace AstroProApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            int[] dataArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
             int key = int.Parse(textBoxMain.Text);
 
             //Call the function and store the results in a variable
