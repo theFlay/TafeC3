@@ -60,15 +60,22 @@ namespace AstroProApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            int[] dataArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
-            int key = int.Parse(textBoxMain.Text);
+            
+            if (string.IsNullOrWhiteSpace(textBoxMain.Text))
+            {
+                MessageBox.Show("Please enter value into text box");
+                return;
+            }
+                int key = int.Parse(textBoxMain.Text);
 
             //Call the function and store the results in a variable
+            int[] dataArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
             bool found = BinarySearchDisplay(dataArray, key, out int index);
 
             if (found)
             {
                 MessageBox.Show($"Found. Index = {index} Value = {dataArray[index]}");
+                return;
             }
             else
             {
