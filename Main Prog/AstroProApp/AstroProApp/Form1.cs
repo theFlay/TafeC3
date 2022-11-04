@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 // Peter Halligan, BigBooleans, Sprint One
 // Date: 27/10/22
@@ -21,7 +22,7 @@ namespace AstroProApp
 {
     public partial class Form1 : Form
     {
-        int[] dataArray = new int[24];
+        int[] dataArray = new int[3];
         //set empty array with length of 24
 
         public Form1()
@@ -137,10 +138,50 @@ namespace AstroProApp
 
         private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //allows use of the listbox current selection
+            foreach (var item in listBoxMain.SelectedItems)
+            {
+                textBoxMain.Text = item.ToString();
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
+        {   
+            {
+                int selectedIndex;
+                int newItem;
+                selectedIndex = listBoxMain.SelectedIndex;
+                statusStrip1.Text = "Updating entry";
+                statusStrip1.Refresh();
+
+                if(int.TryParse(textBoxMain.Text, out newItem))
+                {
+                    if (String.IsNullOrEmpty(textBoxMain.Text))
+                    {
+                        MessageBox.Show("Can not add/edit null");
+                        return;
+                    }
+                    else
+                    {
+                        listBoxMain.Items.Insert(selectedIndex, newItem);
+                        dataArray[selectedIndex] = newItem;
+                        listBoxMain.Items.Clear();
+                        foreach (int f in dataArray)
+                        {
+                            listBoxMain.Items.Add(f);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(" Must Be Int");
+                    return;
+                }
+            }
+        }
+               
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
