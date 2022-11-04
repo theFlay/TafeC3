@@ -79,7 +79,8 @@ namespace AstroProApp
         {
             if (string.IsNullOrWhiteSpace(textBoxMain.Text))
             {
-                MessageBox.Show("Please enter value into text box");
+                MessageBox.Show("Not Found. Please enter value into text box");
+                statusStrip1.Text = "Search Failed";
                 return;
             }
             int key = int.Parse(textBoxMain.Text);
