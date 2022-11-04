@@ -22,7 +22,7 @@ namespace AstroProApp
 {
     public partial class Form1 : Form
     {
-        int[] dataArray = new int[24];
+        int[] dataArray = new int[3];
         //set empty array with length of 24
 
         public Form1()
@@ -138,10 +138,11 @@ namespace AstroProApp
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
-        {
+        {   
             {
+                int selectedIndex;
                 int newItem;
-                int selectedItem = listBoxMain.SelectedIndex;
+                selectedIndex = listBoxMain.SelectedIndex;
                 statusStrip1.Text = "Updating entry";
                 statusStrip1.Refresh();
 
@@ -154,23 +155,12 @@ namespace AstroProApp
                     }
                     else
                     {
-
-
+                        listBoxMain.Items.Insert(selectedIndex, newItem);
+                        dataArray[selectedIndex] = newItem;
+                        listBoxMain.Items.Clear();
+                        foreach (int f in dataArray)
                         {
-                            foreach (int i in dataArray)
-                            {
-                                if (dataArray[i] == selectedItem)
-                                {
-                                    dataArray[i] = newItem;
-                                    break;
-                                }
-                            }
-
-                            listBoxMain.Items.Clear();
-                            foreach (int f in dataArray)
-                            {
-                                listBoxMain.Items.Add(f);
-                            }
+                            listBoxMain.Items.Add(f);
                         }
                     }
                 }
