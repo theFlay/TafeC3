@@ -76,13 +76,12 @@ namespace AstroProApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            int key = int.Parse(textBoxMain.Text);
-            
             if (string.IsNullOrWhiteSpace(textBoxMain.Text))
             {
                 MessageBox.Show("Please enter value into text box");
                 return;
             }
+            int key = int.Parse(textBoxMain.Text);
 
 
             //Call the function and store the results in a variable
