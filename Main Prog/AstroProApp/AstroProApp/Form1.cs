@@ -22,13 +22,12 @@ namespace AstroProApp
 {
     public partial class Form1 : Form
     {
-        int[] dataArray = new int[3];
+        int[] dataArray = new int[24];
         //set empty array with length of 24
 
         public Form1()
         {
             InitializeComponent();
-            
         }
 
         private void buttonGen_Click(object sender, EventArgs e)
@@ -87,7 +86,8 @@ namespace AstroProApp
 
 
             //Call the function and store the results in a variable
-            int[] dataArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
+            // array for testing
+            // int[] dataArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 };
             bool found = BinarySearchDisplay(dataArray, key, out int index);
 
             if (found)
@@ -100,15 +100,15 @@ namespace AstroProApp
                 MessageBox.Show("Not Found.");
             }
         }
-        /// <summary>
-        /// Binary Search Method.
-        /// </summary>
-        /// <param name="myArray">The array of values.</param>
-        /// <param name="key">The key to search for.</param>
-        /// <param name="index">The array index if key was found, -1 otherwise.</param>
-        /// <returns>true if key found, false otherwise.</returns>
+
         public static bool BinarySearchDisplay(int[] myArray, int key, out int index)
         {
+            /// Binary Search Method.
+            /// <param name="myArray">The array of values.</param>
+            /// <param name="key">The key to search for.</param>
+            /// <param name="index">The array index if key was found, -1 otherwise.</param>
+            /// <returns>true if key found, false otherwise.</returns>
+            
             int minIndex = 0;
             int maxIndex = myArray.Length - 1;
             index = -1;
