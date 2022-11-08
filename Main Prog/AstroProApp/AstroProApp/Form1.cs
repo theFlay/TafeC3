@@ -175,7 +175,7 @@ namespace AstroProApp
                 }
                 else
                 {
-                    MessageBox.Show(" Must Be Int");
+                    MessageBox.Show("Error, Please try again.");
                     return;
                 }
             }
