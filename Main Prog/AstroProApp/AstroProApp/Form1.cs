@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 
 // Peter Halligan, BigBooleans, Sprint One
 // Date: 27/10/22
@@ -28,6 +29,15 @@ namespace AstroProApp
         public Form1()
         {
             InitializeComponent();
+        }
+        public void refresher()
+        {
+            SortFun();
+            listBoxMain.Items.Clear();
+            foreach (int i in dataArray)
+            {
+                listBoxMain.Items.Add(i);
+            }
         }
         public static bool BinarySearchDisplay(int[] myArray, int key, out int index)
         {
@@ -101,6 +111,7 @@ namespace AstroProApp
                 dataArray[i] = randNum.Next(0, 101);
                 listBoxMain.Items.Add(dataArray[i]);
             }
+            refresher();
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
@@ -111,7 +122,7 @@ namespace AstroProApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            SortFun();
+            refresher();
             if (string.IsNullOrWhiteSpace(textBoxMain.Text))
             {
                 MessageBox.Show("Not Found. Please enter value in text box");
@@ -135,7 +146,7 @@ namespace AstroProApp
             }
         }
 
-      
+
 
         private void textBoxMain_TextChanged(object sender, EventArgs e)
         {
@@ -152,7 +163,7 @@ namespace AstroProApp
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
-        {   
+        {
             {
                 int selectedIndex;
                 int newItem;
@@ -160,7 +171,7 @@ namespace AstroProApp
                 statusStrip1.Text = "Updating entry";
                 statusStrip1.Refresh();
 
-                if(int.TryParse(textBoxMain.Text, out newItem))
+                if (int.TryParse(textBoxMain.Text, out newItem))
                 {
                     if (String.IsNullOrEmpty(textBoxMain.Text))
                     {
@@ -184,8 +195,9 @@ namespace AstroProApp
                     return;
                 }
             }
+            refresher();
         }
-               
+
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -199,7 +211,12 @@ namespace AstroProApp
 
         private void buttonMidExtreme_Click(object sender, EventArgs e)
         {
-
+            SortFun();
+            double min = dataArray[0];
+            int max = dataArray[23];
+            double midEx = (max + min)/2;
+            textBoxOut1.Text = $"Mid Extreme = {midEx.ToString("F")}";
+            refresher();
         }
 
         private void buttonMode_Click(object sender, EventArgs e)
@@ -209,12 +226,27 @@ namespace AstroProApp
 
         private void buttonAverage_Click(object sender, EventArgs e)
         {
+            SortFun();
+            double mathSum = 0;
+            foreach (int i in dataArray)
+            {
+                mathSum = mathSum + i;
+            }
 
+            double mathAverage = mathSum / 24;
+            textBoxOut1.Text = $"Average = {mathAverage.ToString("F")}";
+            refresher();
         }
 
         private void buttonRange_Click(object sender, EventArgs e)
         {
+            SortFun();
+            double min = dataArray[0];
+            double max = dataArray[23];
+            double range = max - min;
 
+            textBoxOut1.Text = $"Range = {range.ToString("F")}";
+            refresher();
         }
     }
 }
