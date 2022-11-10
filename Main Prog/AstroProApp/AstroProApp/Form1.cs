@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 
 // Peter Halligan, BigBooleans, Sprint One
 // Date: 27/10/22
-// Version: 1.0
+// Version: 1.1
 // Astro Pro
 // Generates an array of randomised data to simulate neutrino measurements in low atmosthphere
 // Inputs, Processes, Outputs
@@ -129,12 +129,9 @@ namespace AstroProApp
                 statusStrip1.Text = "Search Failed";
                 return;
             }
-
-
             //Call the function and store the results in a variable
             int key = int.Parse(textBoxMain.Text);
             bool found = BinarySearchDisplay(dataArray, key, out int index);
-
             if (found)
             {
                 MessageBox.Show($"Found. Index = {index} Value = {dataArray[index]}");
@@ -145,9 +142,6 @@ namespace AstroProApp
                 MessageBox.Show("Not Found.");
             }
         }
-
-
-
         private void textBoxMain_TextChanged(object sender, EventArgs e)
         {
 
