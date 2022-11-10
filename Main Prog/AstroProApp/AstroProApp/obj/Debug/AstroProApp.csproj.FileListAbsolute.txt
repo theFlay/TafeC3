@@ -53,3 +53,14 @@ C:\Users\30063444\Downloads\TafeC3-1.0\TafeC3-1.0\Main Prog\AstroProApp\AstroPro
 C:\Users\30063444\Downloads\TafeC3-1.0\TafeC3-1.0\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.csproj.CoreCompileInputs.cache
 C:\Users\30063444\Downloads\TafeC3-1.0\TafeC3-1.0\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.exe
 C:\Users\30063444\Downloads\TafeC3-1.0\TafeC3-1.0\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.pdb
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\bin\Debug\AstroProApp.exe.config
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\bin\Debug\AstroProApp.exe
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\bin\Debug\AstroProApp.pdb
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.csproj.AssemblyReference.cache
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.Form1.resources
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.Properties.Resources.resources
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.csproj.GenerateResource.cache
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.csproj.CoreCompileInputs.cache
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.exe
+C:\Users\P265068\Documents\GitHub\TafeC3\Main Prog\AstroProApp\AstroProApp\obj\Debug\AstroProApp.pdb
