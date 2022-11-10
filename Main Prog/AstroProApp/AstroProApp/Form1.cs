@@ -23,8 +23,8 @@ namespace AstroProApp
 {
     public partial class Form1 : Form
     {
-        int[] dataArray = new int[24];
         //set empty array with length of 24
+        int[] dataArray = new int[24];
 
         public Form1()
         {
@@ -32,17 +32,20 @@ namespace AstroProApp
         }
         public void refresher()
         {
+            // Function to refresh listbox and array whgen called by sorting both
+            #region
             SortFun();
             listBoxMain.Items.Clear();
             foreach (int i in dataArray)
             {
                 listBoxMain.Items.Add(i);
             }
+            #endregion
         }
         public static bool BinarySearchDisplay(int[] myArray, int key, out int index)
         {
-
             /// Binary Search Method.
+            #region
             /// <param name="myArray">The array of values.</param>
             /// <param name="key">The key to search for.</param>
             /// <param name="index">The array index if key was found, -1 otherwise.</param>
@@ -68,11 +71,14 @@ namespace AstroProApp
                 }
             }
             return false;
+            #endregion
         }
 
 
         public void SortFun()
         {
+            //Sort Function for the Array
+            #region
             listBoxMain.Items.Clear();
             //initial variables
             int tempBubble = 0;
@@ -97,14 +103,15 @@ namespace AstroProApp
             {
                 listBoxMain.Items.Add(f);
             }
+            #endregion
         }
 
         private void buttonGen_Click(object sender, EventArgs e)
         {
             //clears list box and sets a range for random
+            #region
             listBoxMain.Items.Clear();
             Random randNum = new Random();
-
             //loops array and sets each index as a number then puts in in listbox
             for (int i = 0; i < dataArray.Length; i++)
             {
@@ -112,16 +119,21 @@ namespace AstroProApp
                 listBoxMain.Items.Add(dataArray[i]);
             }
             refresher();
+            #endregion
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            SortFun();
+            //calls refresher on sort button
+            refresher();
         }
 
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+
+            //Calls Binary search function on array
+            #region
             refresher();
             if (string.IsNullOrWhiteSpace(textBoxMain.Text))
             {
@@ -141,6 +153,8 @@ namespace AstroProApp
             {
                 MessageBox.Show("Not Found.");
             }
+            refresher();
+            #endregion
         }
         private void textBoxMain_TextChanged(object sender, EventArgs e)
         {
@@ -150,15 +164,19 @@ namespace AstroProApp
         private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             //allows use of the listbox current selection
+            #region
             foreach (var item in listBoxMain.SelectedItems)
             {
                 textBoxMain.Text = item.ToString();
             }
+            #endregion
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+            #region
             {
+                //updates the selected item with textbox.text
                 int selectedIndex;
                 int newItem;
                 selectedIndex = listBoxMain.SelectedIndex;
@@ -190,6 +208,7 @@ namespace AstroProApp
                 }
             }
             refresher();
+            #endregion
         }
 
 
@@ -205,42 +224,74 @@ namespace AstroProApp
 
         private void buttonMidExtreme_Click(object sender, EventArgs e)
         {
+            //calculates the Mid-Extreme of the array
+            #region
             SortFun();
             double min = dataArray[0];
             int max = dataArray[23];
             double midEx = (max + min)/2;
             textBoxOut1.Text = $"Mid Extreme = {midEx.ToString("F")}";
             refresher();
+            #endregion
         }
 
         private void buttonMode_Click(object sender, EventArgs e)
         {
-
+            //Calculates the Mode of the array
+            #region
+            SortFun();
+            int mode = 0;
+            int max = 0;
+            var counts = new Dictionary<int, int>();
+            foreach (int value in dataArray)
+            {
+                if (counts.ContainsKey(value))
+                {
+                    counts[value]++;
+                }
+                else
+                {
+                    counts.Add(value, 1);
+                }
+            }
+            foreach (KeyValuePair<int, int> count in counts)
+            {
+                if (count.Value > max)
+                    mode = count.Key;
+                max = count.Value;
+            }
+            textBoxOut1.Text = $"Mode is: {mode}";
+            refresher();
+            #endregion
         }
 
         private void buttonAverage_Click(object sender, EventArgs e)
         {
+            //Calculates the Average of the array
+            #region
             SortFun();
             double mathSum = 0;
             foreach (int i in dataArray)
             {
                 mathSum = mathSum + i;
             }
-
             double mathAverage = mathSum / 24;
             textBoxOut1.Text = $"Average = {mathAverage.ToString("F")}";
             refresher();
+            #endregion
         }
 
         private void buttonRange_Click(object sender, EventArgs e)
         {
+            //Calculates the Range of the Array
+            #region
             SortFun();
             double min = dataArray[0];
             double max = dataArray[23];
             double range = max - min;
-
             textBoxOut1.Text = $"Range = {range.ToString("F")}";
             refresher();
+            #endregion
         }
     }
 }
