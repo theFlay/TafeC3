@@ -225,7 +225,6 @@ namespace AstroProApp
                     mode = count.Key;
                     max= count.Value;
             }
-            //mode = count.Values.Max();
             textBoxOut1.Text = $"Mode is: {mode}";
         }
         private void buttonAverage_Click(object sender, EventArgs e)
