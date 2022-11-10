@@ -191,5 +191,30 @@ namespace AstroProApp
         {
 
         }
+
+        private void textBoxOut1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMidExtreme_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAverage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRange_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

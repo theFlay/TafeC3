@@ -38,11 +38,11 @@
             this.listBoxMain = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonMidExtreme = new System.Windows.Forms.Button();
+            this.buttonMode = new System.Windows.Forms.Button();
+            this.buttonAverage = new System.Windows.Forms.Button();
+            this.buttonRange = new System.Windows.Forms.Button();
+            this.textBoxOut1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -138,65 +138,70 @@
             this.buttonEdit.UseVisualStyleBackColor = false;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // button1
+            // buttonMidExtreme
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(174, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Mid-Extreme";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonMidExtreme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonMidExtreme.ForeColor = System.Drawing.Color.White;
+            this.buttonMidExtreme.Location = new System.Drawing.Point(174, 54);
+            this.buttonMidExtreme.Name = "buttonMidExtreme";
+            this.buttonMidExtreme.Size = new System.Drawing.Size(75, 23);
+            this.buttonMidExtreme.TabIndex = 9;
+            this.buttonMidExtreme.Text = "Mid-Extreme";
+            this.buttonMidExtreme.UseVisualStyleBackColor = false;
+            this.buttonMidExtreme.Click += new System.EventHandler(this.buttonMidExtreme_Click);
             // 
-            // button2
+            // buttonMode
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(255, 54);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Mode";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonMode.ForeColor = System.Drawing.Color.White;
+            this.buttonMode.Location = new System.Drawing.Point(255, 54);
+            this.buttonMode.Name = "buttonMode";
+            this.buttonMode.Size = new System.Drawing.Size(75, 23);
+            this.buttonMode.TabIndex = 10;
+            this.buttonMode.Text = "Mode";
+            this.buttonMode.UseVisualStyleBackColor = false;
+            this.buttonMode.Click += new System.EventHandler(this.buttonMode_Click);
             // 
-            // button3
+            // buttonAverage
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(174, 83);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Average";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonAverage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonAverage.ForeColor = System.Drawing.Color.White;
+            this.buttonAverage.Location = new System.Drawing.Point(174, 83);
+            this.buttonAverage.Name = "buttonAverage";
+            this.buttonAverage.Size = new System.Drawing.Size(75, 23);
+            this.buttonAverage.TabIndex = 11;
+            this.buttonAverage.Text = "Average";
+            this.buttonAverage.UseVisualStyleBackColor = false;
+            this.buttonAverage.Click += new System.EventHandler(this.buttonAverage_Click);
             // 
-            // button4
+            // buttonRange
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(255, 83);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Range";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonRange.ForeColor = System.Drawing.Color.White;
+            this.buttonRange.Location = new System.Drawing.Point(255, 83);
+            this.buttonRange.Name = "buttonRange";
+            this.buttonRange.Size = new System.Drawing.Size(75, 23);
+            this.buttonRange.TabIndex = 12;
+            this.buttonRange.Text = "Range";
+            this.buttonRange.UseVisualStyleBackColor = false;
+            this.buttonRange.Click += new System.EventHandler(this.buttonRange_Click);
             // 
-            // textBox1
+            // textBoxOut1
             // 
-            this.textBox1.Location = new System.Drawing.Point(174, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 20);
-            this.textBox1.TabIndex = 13;
+            this.textBoxOut1.Location = new System.Drawing.Point(174, 28);
+            this.textBoxOut1.Name = "textBoxOut1";
+            this.textBoxOut1.Size = new System.Drawing.Size(156, 20);
+            this.textBoxOut1.TabIndex = 13;
+            this.textBoxOut1.TextChanged += new System.EventHandler(this.textBoxOut1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(171, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Enter Text";
+            this.label1.Text = "Output";
             // 
             // Form1
             // 
@@ -205,11 +210,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(342, 561);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBoxOut1);
+            this.Controls.Add(this.buttonRange);
+            this.Controls.Add(this.buttonAverage);
+            this.Controls.Add(this.buttonMode);
+            this.Controls.Add(this.buttonMidExtreme);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.listBoxMain);
@@ -241,11 +246,11 @@
         private System.Windows.Forms.ListBox listBoxMain;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button buttonEdit;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonMidExtreme;
+        private System.Windows.Forms.Button buttonMode;
+        private System.Windows.Forms.Button buttonAverage;
+        private System.Windows.Forms.Button buttonRange;
+        private System.Windows.Forms.TextBox textBoxOut1;
         private System.Windows.Forms.Label label1;
     }
 }
