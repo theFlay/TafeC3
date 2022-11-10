@@ -29,86 +29,15 @@ namespace AstroProApp
         {
             InitializeComponent();
         }
-
-        private void buttonGen_Click(object sender, EventArgs e)
-        {
-            //clears list box and sets a range for random
-            listBoxMain.Items.Clear();
-            Random randNum = new Random();
-
-            //loops array and sets each index as a number then puts in in listbox
-            for (int i = 0; i < dataArray.Length; i++)
-            {
-                dataArray[i] = randNum.Next(0, 101);
-                listBoxMain.Items.Add(dataArray[i]);
-            }
-        }
-
-        private void buttonSort_Click(object sender, EventArgs e)
-        {
-            #region
-            listBoxMain.Items.Clear();
-            //initial variables
-            int tempBubble = 0;
-
-            //sets index for first number
-            for ( int left = 0; left < dataArray.Length -1; left++ )
-            {
-                //sets index for second number
-                for (int right = 0; right < dataArray.Length -1; right++ )
-                {
-                    //compares the two
-                    if (dataArray[right] < dataArray[right +1])
-                    {
-                        //if if 1<2 move 1 over 2 via temp var
-                        tempBubble = dataArray[right + 1];
-                        dataArray[right + 1] = dataArray[right];
-                        dataArray[right] = tempBubble;
-                    }
-                }
-            }
-            foreach( int f in dataArray)
-            {
-                listBoxMain.Items.Add(f);
-            }
-            #endregion
-        }
-
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxMain.Text))
-            {
-                MessageBox.Show("Not Found. Please enter value in text box");
-                statusStrip1.Text = "Search Failed";
-                return;
-            }
-            int key = int.Parse(textBoxMain.Text);
-
-
-            //Call the function and store the results in a variable
-            // array for testing
-            // int[] dataArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 };
-            bool found = BinarySearchDisplay(dataArray, key, out int index);
-
-            if (found)
-            {
-                MessageBox.Show($"Found. Index = {index} Value = {dataArray[index]}");
-                return;
-            }
-            else
-            {
-                MessageBox.Show("Not Found.");
-            }
-        }
-
         public static bool BinarySearchDisplay(int[] myArray, int key, out int index)
         {
+
             /// Binary Search Method.
             /// <param name="myArray">The array of values.</param>
             /// <param name="key">The key to search for.</param>
             /// <param name="index">The array index if key was found, -1 otherwise.</param>
             /// <returns>true if key found, false otherwise.</returns>
-            
+
             int minIndex = 0;
             int maxIndex = myArray.Length - 1;
             index = -1;
@@ -131,6 +60,82 @@ namespace AstroProApp
             return false;
         }
 
+
+        public void SortFun()
+        {
+            listBoxMain.Items.Clear();
+            //initial variables
+            int tempBubble = 0;
+
+            //sets index for first number
+            for (int left = 0; left < dataArray.Length - 1; left++)
+            {
+                //sets index for second number
+                for (int right = 0; right < dataArray.Length - 1; right++)
+                {
+                    //compares the two
+                    if (dataArray[right] > dataArray[right + 1])
+                    {
+                        //if if 1<2 move 1 over 2 via temp var
+                        tempBubble = dataArray[right + 1];
+                        dataArray[right + 1] = dataArray[right];
+                        dataArray[right] = tempBubble;
+                    }
+                }
+            }
+            foreach (int f in dataArray)
+            {
+                listBoxMain.Items.Add(f);
+            }
+        }
+
+        private void buttonGen_Click(object sender, EventArgs e)
+        {
+            //clears list box and sets a range for random
+            listBoxMain.Items.Clear();
+            Random randNum = new Random();
+
+            //loops array and sets each index as a number then puts in in listbox
+            for (int i = 0; i < dataArray.Length; i++)
+            {
+                dataArray[i] = randNum.Next(0, 101);
+                listBoxMain.Items.Add(dataArray[i]);
+            }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            SortFun();
+        }
+
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            SortFun();
+            if (string.IsNullOrWhiteSpace(textBoxMain.Text))
+            {
+                MessageBox.Show("Not Found. Please enter value in text box");
+                statusStrip1.Text = "Search Failed";
+                return;
+            }
+
+
+            //Call the function and store the results in a variable
+            int key = int.Parse(textBoxMain.Text);
+            bool found = BinarySearchDisplay(dataArray, key, out int index);
+
+            if (found)
+            {
+                MessageBox.Show($"Found. Index = {index} Value = {dataArray[index]}");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Not Found.");
+            }
+        }
+
+      
 
         private void textBoxMain_TextChanged(object sender, EventArgs e)
         {
