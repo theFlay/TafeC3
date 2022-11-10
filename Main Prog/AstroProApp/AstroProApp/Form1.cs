@@ -204,19 +204,29 @@ namespace AstroProApp
 
         private void buttonMode_Click(object sender, EventArgs e)
         {
-            var count = new Dictionary<double, double>();
-            foreach (double value in dataArray)
+            int mode = 0;
+            int max = 0;
+            var counts = new Dictionary<int, int>();
+            foreach (int value in dataArray)
             {
-                if (count.ContainsKey(value))
+                if (counts.ContainsKey(value))
                 {
-                    count[value]++;
+                    counts[value]++;
                 }
                 else
                 {
-                    count.Add(value, 1);
+                    counts.Add(value, 1);
                 }
-                textBoxOut1.Text = $"Mode is: {count}";
             }
+
+            foreach(KeyValuePair<int,int> count in counts)
+            {
+                if (count.Value > max)
+                    mode = count.Key;
+                    max= count.Value;
+            }
+            //mode = count.Values.Max();
+            textBoxOut1.Text = $"Mode is: {mode}";
         }
         private void buttonAverage_Click(object sender, EventArgs e)
         {
