@@ -293,5 +293,27 @@ namespace AstroProApp
             refresher();
             #endregion
         }
+
+        private void labelData_Click(object sender, EventArgs e)
+        {
+
+        }
+         
+        private void buttonSeqSearch_Click(object sender, EventArgs e)
+        {
+/*            int searchItem = int.Parse(textBoxMain.Text);
+            SortFun();
+            foreach (int i in dataArray)
+            {
+                if (i == searchItem);
+                {
+                    MessageBox.Show("Item Found.");
+                    statusStrip1.Text = "Item Found";
+                    return;
+                }
+            }
+
+            refresher();*/
+        }
     }
 }

@@ -44,12 +44,13 @@
             this.buttonRange = new System.Windows.Forms.Button();
             this.textBoxOut1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonSeqSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelTxtBx
             // 
             this.labelTxtBx.AutoSize = true;
-            this.labelTxtBx.Location = new System.Drawing.Point(9, 12);
+            this.labelTxtBx.Location = new System.Drawing.Point(31, 12);
             this.labelTxtBx.Name = "labelTxtBx";
             this.labelTxtBx.Size = new System.Drawing.Size(56, 13);
             this.labelTxtBx.TabIndex = 0;
@@ -58,17 +59,18 @@
             // labelData
             // 
             this.labelData.AutoSize = true;
-            this.labelData.Location = new System.Drawing.Point(12, 129);
+            this.labelData.Location = new System.Drawing.Point(12, 138);
             this.labelData.Name = "labelData";
             this.labelData.Size = new System.Drawing.Size(33, 13);
             this.labelData.TabIndex = 1;
             this.labelData.Text = "Data:";
+            this.labelData.Click += new System.EventHandler(this.labelData_Click);
             // 
             // textBoxMain
             // 
             this.textBoxMain.Location = new System.Drawing.Point(12, 28);
             this.textBoxMain.Name = "textBoxMain";
-            this.textBoxMain.Size = new System.Drawing.Size(156, 20);
+            this.textBoxMain.Size = new System.Drawing.Size(112, 20);
             this.textBoxMain.TabIndex = 2;
             this.textBoxMain.TextChanged += new System.EventHandler(this.textBoxMain_TextChanged);
             // 
@@ -76,9 +78,9 @@
             // 
             this.buttonGen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonGen.ForeColor = System.Drawing.Color.White;
-            this.buttonGen.Location = new System.Drawing.Point(12, 54);
+            this.buttonGen.Location = new System.Drawing.Point(15, 54);
             this.buttonGen.Name = "buttonGen";
-            this.buttonGen.Size = new System.Drawing.Size(75, 23);
+            this.buttonGen.Size = new System.Drawing.Size(72, 23);
             this.buttonGen.TabIndex = 3;
             this.buttonGen.Text = "Generate";
             this.buttonGen.UseVisualStyleBackColor = false;
@@ -88,9 +90,9 @@
             // 
             this.buttonSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonSort.ForeColor = System.Drawing.Color.White;
-            this.buttonSort.Location = new System.Drawing.Point(93, 54);
+            this.buttonSort.Location = new System.Drawing.Point(15, 112);
             this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(75, 23);
+            this.buttonSort.Size = new System.Drawing.Size(72, 23);
             this.buttonSort.TabIndex = 4;
             this.buttonSort.Text = "Sort";
             this.buttonSort.UseVisualStyleBackColor = false;
@@ -100,28 +102,28 @@
             // 
             this.buttonSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
-            this.buttonSearch.Location = new System.Drawing.Point(93, 83);
+            this.buttonSearch.Location = new System.Drawing.Point(93, 54);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(72, 23);
             this.buttonSearch.TabIndex = 5;
-            this.buttonSearch.Text = "Search";
+            this.buttonSearch.Text = "BinSearch";
             this.buttonSearch.UseVisualStyleBackColor = false;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // listBoxMain
             // 
             this.listBoxMain.FormattingEnabled = true;
-            this.listBoxMain.Location = new System.Drawing.Point(12, 145);
+            this.listBoxMain.Location = new System.Drawing.Point(9, 154);
             this.listBoxMain.Name = "listBoxMain";
-            this.listBoxMain.Size = new System.Drawing.Size(318, 368);
+            this.listBoxMain.Size = new System.Drawing.Size(237, 368);
             this.listBoxMain.TabIndex = 6;
             this.listBoxMain.SelectedIndexChanged += new System.EventHandler(this.listBoxMain_SelectedIndexChanged);
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 527);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(342, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(254, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
@@ -130,9 +132,9 @@
             // 
             this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonEdit.ForeColor = System.Drawing.Color.White;
-            this.buttonEdit.Location = new System.Drawing.Point(12, 83);
+            this.buttonEdit.Location = new System.Drawing.Point(15, 83);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonEdit.Size = new System.Drawing.Size(72, 23);
             this.buttonEdit.TabIndex = 8;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = false;
@@ -142,9 +144,9 @@
             // 
             this.buttonMidExtreme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonMidExtreme.ForeColor = System.Drawing.Color.White;
-            this.buttonMidExtreme.Location = new System.Drawing.Point(174, 54);
+            this.buttonMidExtreme.Location = new System.Drawing.Point(93, 112);
             this.buttonMidExtreme.Name = "buttonMidExtreme";
-            this.buttonMidExtreme.Size = new System.Drawing.Size(75, 23);
+            this.buttonMidExtreme.Size = new System.Drawing.Size(72, 23);
             this.buttonMidExtreme.TabIndex = 9;
             this.buttonMidExtreme.Text = "Mid-Extreme";
             this.buttonMidExtreme.UseVisualStyleBackColor = false;
@@ -154,9 +156,9 @@
             // 
             this.buttonMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonMode.ForeColor = System.Drawing.Color.White;
-            this.buttonMode.Location = new System.Drawing.Point(255, 54);
+            this.buttonMode.Location = new System.Drawing.Point(174, 83);
             this.buttonMode.Name = "buttonMode";
-            this.buttonMode.Size = new System.Drawing.Size(75, 23);
+            this.buttonMode.Size = new System.Drawing.Size(72, 23);
             this.buttonMode.TabIndex = 10;
             this.buttonMode.Text = "Mode";
             this.buttonMode.UseVisualStyleBackColor = false;
@@ -166,9 +168,9 @@
             // 
             this.buttonAverage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonAverage.ForeColor = System.Drawing.Color.White;
-            this.buttonAverage.Location = new System.Drawing.Point(174, 83);
+            this.buttonAverage.Location = new System.Drawing.Point(174, 112);
             this.buttonAverage.Name = "buttonAverage";
-            this.buttonAverage.Size = new System.Drawing.Size(75, 23);
+            this.buttonAverage.Size = new System.Drawing.Size(72, 23);
             this.buttonAverage.TabIndex = 11;
             this.buttonAverage.Text = "Average";
             this.buttonAverage.UseVisualStyleBackColor = false;
@@ -178,9 +180,9 @@
             // 
             this.buttonRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonRange.ForeColor = System.Drawing.Color.White;
-            this.buttonRange.Location = new System.Drawing.Point(255, 83);
+            this.buttonRange.Location = new System.Drawing.Point(174, 54);
             this.buttonRange.Name = "buttonRange";
-            this.buttonRange.Size = new System.Drawing.Size(75, 23);
+            this.buttonRange.Size = new System.Drawing.Size(72, 23);
             this.buttonRange.TabIndex = 12;
             this.buttonRange.Text = "Range";
             this.buttonRange.UseVisualStyleBackColor = false;
@@ -188,9 +190,9 @@
             // 
             // textBoxOut1
             // 
-            this.textBoxOut1.Location = new System.Drawing.Point(174, 28);
+            this.textBoxOut1.Location = new System.Drawing.Point(130, 28);
             this.textBoxOut1.Name = "textBoxOut1";
-            this.textBoxOut1.Size = new System.Drawing.Size(156, 20);
+            this.textBoxOut1.Size = new System.Drawing.Size(116, 20);
             this.textBoxOut1.TabIndex = 13;
             this.textBoxOut1.TextChanged += new System.EventHandler(this.textBoxOut1_TextChanged);
             // 
@@ -203,12 +205,25 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Output";
             // 
+            // buttonSeqSearch
+            // 
+            this.buttonSeqSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonSeqSearch.ForeColor = System.Drawing.Color.White;
+            this.buttonSeqSearch.Location = new System.Drawing.Point(93, 83);
+            this.buttonSeqSearch.Name = "buttonSeqSearch";
+            this.buttonSeqSearch.Size = new System.Drawing.Size(72, 23);
+            this.buttonSeqSearch.TabIndex = 15;
+            this.buttonSeqSearch.Text = "SeqSearch";
+            this.buttonSeqSearch.UseVisualStyleBackColor = false;
+            this.buttonSeqSearch.Click += new System.EventHandler(this.buttonSeqSearch_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(342, 561);
+            this.ClientSize = new System.Drawing.Size(254, 549);
+            this.Controls.Add(this.buttonSeqSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxOut1);
             this.Controls.Add(this.buttonRange);
@@ -252,6 +267,7 @@
         private System.Windows.Forms.Button buttonRange;
         private System.Windows.Forms.TextBox textBoxOut1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonSeqSearch;
     }
 }
 
