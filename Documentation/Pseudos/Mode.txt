@@ -1,2 +1,28 @@
 Pseudo Code for findin the MODE in an array
 
+Sort array with SORTFUN function
+Set SEPERATOR string
+Set MOSTFREQUENTVALUES as a new HashSet of type intager
+Set MAXCOUNT as  as zero
+Set FREQUENCYTRACK as a new Dictionary with both types of integer
+
+Iterate through Data Array
+	Set CURCOUNT as one
+
+	if FREQUENCYTRACK is known then set EXISTINGCOUTN as FREQUENCYTRACK
+		Set CURCOUNT as EXISTINGCOUNT plus one
+	Set FREQUENCYTRACK with VALUE as CURCOUNT
+
+	If CURCOUNT is greater then MAXCOUNT
+		Set MAXCOUNT equals CURCOUNT
+		Clear MOSTFREQUENTVALUES
+		Add VALUE to MOSTFREQUENTVALUES
+
+	else if CURCOUNT is eual to MAXCOUNT
+		Add VALUE to MOSTFREQUENTVALUES
+
+	Output all MOSTFREQUENTVALUES to textbox with SEPERATOR as a seperator
+	Update status strip
+	Refresh Listbox and Array
+
+	
