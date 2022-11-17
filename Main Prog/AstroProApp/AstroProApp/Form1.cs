@@ -32,7 +32,8 @@ namespace AstroProApp
         }
         public void refresher()
         {
-            // Function to refresh listbox and array whgen called by sorting both
+            // Function to refresh listbox and array when called
+            // Sorts the array, deletes list box, re-adds array to list box
             #region
             SortFun();
             listBoxMain.Items.Clear();
@@ -77,8 +78,11 @@ namespace AstroProApp
 
         public void SortFun()
         {
-            //Sort Function for the Array
+            //Bubble Sort Function for the Array
             #region
+            statusStrip1.Text = "Sorting Array";
+            statusStrip1.Refresh();
+
             listBoxMain.Items.Clear();
             //initial variables
             int tempBubble = 0;
@@ -103,6 +107,8 @@ namespace AstroProApp
             {
                 listBoxMain.Items.Add(f);
             }
+            statusStrip1.Text = "Array Has been Sorted";
+            statusStrip1.Refresh();
             #endregion
         }
 
@@ -110,6 +116,8 @@ namespace AstroProApp
         {
             //clears list box and sets a range for random
             #region
+            statusStrip1.Text = "Generating Data";
+            statusStrip1.Refresh();
             listBoxMain.Items.Clear();
             Random randNum = new Random();
             //loops array and sets each index as a number then puts in in listbox
@@ -118,6 +126,8 @@ namespace AstroProApp
                 dataArray[i] = randNum.Next(0, 101);
                 listBoxMain.Items.Add(dataArray[i]);
             }
+            statusStrip1.Text = "Data Generated";
+            statusStrip1.Refresh();
             refresher();
             #endregion
         }
@@ -125,7 +135,11 @@ namespace AstroProApp
         private void buttonSort_Click(object sender, EventArgs e)
         {
             //calls refresher on sort button
+            #region
             refresher();
+            statusStrip1.Text = "Listbox and Array Sorted";
+            statusStrip1.Refresh();
+            #endregion
         }
 
 
@@ -139,6 +153,7 @@ namespace AstroProApp
             {
                 MessageBox.Show("Not Found. Please enter value in text box");
                 statusStrip1.Text = "Search Failed";
+                statusStrip1.Refresh();
                 return;
             }
             //Call the function and store the results in a variable
@@ -147,11 +162,15 @@ namespace AstroProApp
             if (found)
             {
                 MessageBox.Show($"Found. Index = {index} Value = {dataArray[index]}");
+                statusStrip1.Text = "Search Passed. Item Found";
+                statusStrip1.Refresh();
                 return;
             }
             else
             {
                 MessageBox.Show("Not Found.");
+                statusStrip1.Text = "Search Passed. Item Not Found";
+                statusStrip1.Refresh();
             }
             refresher();
             #endregion
@@ -174,6 +193,7 @@ namespace AstroProApp
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+            //Edit an item in the Array
             #region
             {
                 //updates the selected item with textbox.text
@@ -188,6 +208,8 @@ namespace AstroProApp
                     if (String.IsNullOrEmpty(textBoxMain.Text))
                     {
                         MessageBox.Show("Can not add/edit null");
+                        statusStrip1.Text = "Edit Failed";
+                        statusStrip1.Refresh();
                         return;
                     }
                     else
@@ -199,11 +221,15 @@ namespace AstroProApp
                         {
                             listBoxMain.Items.Add(f);
                         }
+                        statusStrip1.Text = "Edit Completed";
+                        statusStrip1.Refresh();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Error, Please try again.");
+                    statusStrip1.Text = "Search Failed";
+                    statusStrip1.Refresh();
                     return;
                 }
             }
@@ -227,10 +253,10 @@ namespace AstroProApp
             //calculates the Mid-Extreme of the array
             #region
             SortFun();
-            double min = dataArray[0];
-            int max = dataArray[23];
-            double midEx = (max + min)/2;
+            double midEx = (dataArray.Max() + dataArray.Min())/2;
             textBoxOut1.Text = $"Mid Extreme = {midEx.ToString("F")}";
+            statusStrip1.Text = "Mid Extreme Calculation Complete";
+            statusStrip1.Refresh();
             refresher();
             #endregion
         }
@@ -275,8 +301,10 @@ namespace AstroProApp
             {
                 mathSum = mathSum + i;
             }
-            double mathAverage = mathSum / 24;
+            double mathAverage = mathSum / dataArray.Length;
             textBoxOut1.Text = $"Average = {mathAverage.ToString("F")}";
+            statusStrip1.Text = "Average Calculation Complete";
+            statusStrip1.Refresh();
             refresher();
             #endregion
         }
@@ -286,10 +314,10 @@ namespace AstroProApp
             //Calculates the Range of the Array
             #region
             SortFun();
-            double min = dataArray[0];
-            double max = dataArray[23];
-            double range = max - min;
+            double range = dataArray.Max() - dataArray.Min();
             textBoxOut1.Text = $"Range = {range.ToString("F")}";
+            statusStrip1.Text = "Range Calculation Completed";
+            statusStrip1.Refresh();
             refresher();
             #endregion
         }
@@ -301,8 +329,8 @@ namespace AstroProApp
          
         private void buttonSeqSearch_Click(object sender, EventArgs e)
         {
-            #region
             //Sequential Search of Items in array
+            #region
             bool searchBool = true;
             statusStrip1.Text = "Preforming Linear Search";
             statusStrip1.Refresh();
@@ -320,7 +348,6 @@ namespace AstroProApp
             else
             {
                 SortFun();
-
                 for (int i = 0; i < leng; i++)
                 {
                     if (dataArray[i] == finding)
@@ -331,12 +358,15 @@ namespace AstroProApp
                 if (searchBool == false)
                 {
                     MessageBox.Show("Plate is in list");
+                    statusStrip1.Text = "Item Found";
+                    statusStrip1.Refresh();
                 }
                 else
                 {
                     MessageBox.Show("Plate is NOT in list");
+                    statusStrip1.Text = "Item Not Found";
+                    statusStrip1.Refresh();
                 }
-
                 statusStrip1.Text = "Search Complete";
                 statusStrip1.Refresh();
                 this.ActiveControl = textBoxMain;

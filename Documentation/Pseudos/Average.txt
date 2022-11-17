@@ -1,0 +1,12 @@
+Pseudo Code for findin the AVERAGE in an array
+
+Call SORT function to sort array
+Initialise Double MATHSUM
+
+Iterate through array with Foreach loop
+    MATHSUM is equal to MATHSUM plus current array number
+
+Set MATHAVERAGE is equal to MATHSUM divided by array length plus one
+Output MAHAVERAGE to Output TextBox
+
+Call Array Refresh Function

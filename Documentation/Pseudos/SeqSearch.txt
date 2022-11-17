@@ -1,0 +1,26 @@
+Pseudo for preformiong a SEQUENTAIL SEARCH in an array
+
+Set SEARCHBOOL flag to true
+Set Status Strip to show what is happening
+Set FINDING to text from textbox
+Set LENg to length of array
+
+if Textbox is empty
+    Show Message box error
+    Set status strip to error Message
+    clear textbox
+
+else
+    Sort the array
+    for loop iterate through array
+        if array item is euqal to FINDING
+            Set SEARCHBOOL to false
+    
+    if SEARCHBOOL is false 
+        show message that item was found in array
+
+    else
+        Show message box that item was not found
+
+    Set status strip to say search is complete
+    

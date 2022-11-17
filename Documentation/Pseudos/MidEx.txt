@@ -1,0 +1,9 @@
+Pseudo Code for findin the MID-EXTREME in an array
+
+Call SORT function to sort array
+Set MIN as first number in array
+Set MAX as last number in array
+Set MIDEX as half of the result of MAX plus MIN
+
+Output MIDEX to output Textbox
+Call Refresh Function

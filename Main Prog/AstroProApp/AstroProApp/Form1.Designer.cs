@@ -113,7 +113,7 @@
             // listBoxMain
             // 
             this.listBoxMain.FormattingEnabled = true;
-            this.listBoxMain.Location = new System.Drawing.Point(9, 154);
+            this.listBoxMain.Location = new System.Drawing.Point(9, 156);
             this.listBoxMain.Name = "listBoxMain";
             this.listBoxMain.Size = new System.Drawing.Size(237, 368);
             this.listBoxMain.TabIndex = 6;
@@ -125,7 +125,7 @@
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(254, 22);
             this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Text = "Status Stip";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
             // buttonEdit
