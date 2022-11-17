@@ -434,13 +434,13 @@ namespace AstroProApp
                 }
                 if (searchBool == false)
                 {
-                    MessageBox.Show("Plate is in list");
+                    MessageBox.Show("Item is in list");
                     toolStripStatusLabel1.Text = "Item Found";
                     statusStrip1.Refresh();
                 }
                 else
                 {
-                    MessageBox.Show("Plate is NOT in list");
+                    MessageBox.Show("Item is NOT in list");
                     toolStripStatusLabel1.Text = "Item Not Found";
                     statusStrip1.Refresh();
                 }
