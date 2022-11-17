@@ -264,30 +264,49 @@ namespace AstroProApp
 
         private void buttonMode_Click(object sender, EventArgs e)
         {
+            //Finds the Mode of the array
+            #region
+            SortFun();
             string seperator = ", ";
             var mostFrequentValues = new HashSet<int>();
             int maxCount = 0;
+            // Prepare our frequency tracking dictionary, max frequency count, and frequent values setvar
             var frequencyTrack = new Dictionary<int, int>();
             foreach (int value in dataArray)
             {
                 int curCount = 1;
+                // If we already know about this number then we should
+                // update the frequency to existing
                 if (frequencyTrack.TryGetValue(value, out int existingCount))
                 {
                     curCount = existingCount +1;
                 }
+                // set the frequency for this value
                 frequencyTrack[value] = curCount;
 
+                // if the frequency is higher than the previously known value
+                // we have a new winner, so we should record the new frequency
+                // and clear the winning list of numbers before finally adding
+                // the current value
                 if (curCount > maxCount)
                 {
                     maxCount= curCount;
                     mostFrequentValues.Clear();
                     mostFrequentValues.Add(value);
                 }
+                // if the count matches the current max then we should
+                //add it as another winner
                 else if (curCount == maxCount)
                 {
                     mostFrequentValues.Add(value);
                 }
+                // we don't care about lesser frequencies so we don't do anything here
+                // print the result(s)
                 textBoxOut1.Text = "Mode(s): " + string.Join(seperator, mostFrequentValues);
+                statusStrip1.Text = "Mode Calculation Complete";
+                statusStrip1.Refresh();
+                refresher();
+                #endregion
             }
         }
         private void buttonAverage_Click(object sender, EventArgs e)
