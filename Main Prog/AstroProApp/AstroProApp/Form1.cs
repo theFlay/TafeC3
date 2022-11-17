@@ -205,6 +205,7 @@ namespace AstroProApp
 
         private void buttonMode_Click(object sender, EventArgs e)
         {
+            string seperator = ", ";
             var mostFrequentValues = new HashSet<int>();
             int maxCount = 0;
             var frequencyTrack = new Dictionary<int, int>();
@@ -227,6 +228,7 @@ namespace AstroProApp
                 {
                     mostFrequentValues.Add(value);
                 }
+                textBoxOut1.Text = "Mode(s): " + string.Join(seperator, mostFrequentValues);
             }
         }
         private void buttonAverage_Click(object sender, EventArgs e)
