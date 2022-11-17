@@ -301,19 +301,47 @@ namespace AstroProApp
          
         private void buttonSeqSearch_Click(object sender, EventArgs e)
         {
-/*            int searchItem = int.Parse(textBoxMain.Text);
-            SortFun();
-            foreach (int i in dataArray)
-            {
-                if (i == searchItem);
-                {
-                    MessageBox.Show("Item Found.");
-                    statusStrip1.Text = "Item Found";
-                    return;
-                }
-            }
+            #region
+            //Sequential Search of Items in array
+            bool searchBool = true;
+            statusStrip1.Text = "Preforming Linear Search";
+            statusStrip1.Refresh();
+            int.TryParse(textBoxMain.Text, out int finding);
+            int leng = dataArray.Length;
 
-            refresher();*/
+            if (textBoxMain.Text == "")
+            {
+                MessageBox.Show(" Can not search for null");
+                statusStrip1.Text = "Search Error";
+                statusStrip1.Refresh();
+                textBoxMain.Clear();
+                this.ActiveControl = textBoxMain;
+            }
+            else
+            {
+                SortFun();
+
+                for (int i = 0; i < leng; i++)
+                {
+                    if (dataArray[i] == finding)
+                    {
+                        searchBool = false;
+                    }
+                }
+                if (searchBool == false)
+                {
+                    MessageBox.Show("Plate is in list");
+                }
+                else
+                {
+                    MessageBox.Show("Plate is NOT in list");
+                }
+
+                statusStrip1.Text = "Search Complete";
+                statusStrip1.Refresh();
+                this.ActiveControl = textBoxMain;
+            }
+            #endregion
         }
     }
 }
