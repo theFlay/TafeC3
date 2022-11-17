@@ -372,5 +372,25 @@ namespace AstroProApp
             }
             #endregion
         }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void toolTip2_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void range_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
     }
 }
