@@ -38,6 +38,7 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.listBoxMain = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonMidExtreme = new System.Windows.Forms.Button();
             this.buttonMode = new System.Windows.Forms.Button();
@@ -46,8 +47,6 @@
             this.textBoxOut1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonSeqSearch = new System.Windows.Forms.Button();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusStrip1.SuspendLayout();
             this.enterText = new System.Windows.Forms.ToolTip(this.components);
             this.output = new System.Windows.Forms.ToolTip(this.components);
             this.Generate = new System.Windows.Forms.ToolTip(this.components);
@@ -60,6 +59,7 @@
             this.midExtreme = new System.Windows.Forms.ToolTip(this.components);
             this.average = new System.Windows.Forms.ToolTip(this.components);
             this.listBox = new System.Windows.Forms.ToolTip(this.components);
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelTxtBx
@@ -150,6 +150,13 @@
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "Status Stip";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
             // buttonEdit
             // 
@@ -248,12 +255,7 @@
             this.buttonSeqSearch.UseVisualStyleBackColor = false;
             this.buttonSeqSearch.Click += new System.EventHandler(this.buttonSeqSearch_Click);
             // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-			// range
+            // range
             // 
             this.range.Popup += new System.Windows.Forms.PopupEventHandler(this.range_Popup);
             // 
@@ -285,9 +287,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Astro Pro";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

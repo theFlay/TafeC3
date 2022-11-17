@@ -141,6 +141,8 @@ namespace AstroProApp
             //Calls GenData function to randomise list
             #region
             GenData();
+            toolStripStatusLabel1.Text = "Data Generated";
+            statusStrip1.Refresh();
             #endregion
         }
 
@@ -215,6 +217,7 @@ namespace AstroProApp
             //Edit an item in the Array
             #region
             {
+                bool editPass = false;
                 if (hasGen == false)
                 {
                     GenData();
@@ -225,38 +228,52 @@ namespace AstroProApp
                 selectedIndex = listBoxMain.SelectedIndex;
                 toolStripStatusLabel1.Text = "Updating entry";
                 statusStrip1.Refresh();
-
-                if (int.TryParse(textBoxMain.Text, out newItem))
+                try
                 {
-                    if (String.IsNullOrEmpty(textBoxMain.Text))
+                    if (int.TryParse(textBoxMain.Text, out newItem))
                     {
-                        MessageBox.Show("Can not add/edit null");
-                        toolStripStatusLabel1.Text = "Edit Failed";
-                        statusStrip1.Refresh();
-                        return;
+                        if (String.IsNullOrEmpty(textBoxMain.Text))
+                        {
+                            MessageBox.Show("Can not add/edit null");
+                            editPass = false;
+                            return;
+                        }
+                        else
+                        {
+                            listBoxMain.Items.Insert(selectedIndex, newItem);
+                            dataArray[selectedIndex] = newItem;
+                            listBoxMain.Items.Clear();
+                            foreach (int f in dataArray)
+                            {
+                                listBoxMain.Items.Add(f);
+                            }
+                        }
                     }
                     else
                     {
-                        listBoxMain.Items.Insert(selectedIndex, newItem);
-                        dataArray[selectedIndex] = newItem;
-                        listBoxMain.Items.Clear();
-                        foreach (int f in dataArray)
-                        {
-                            listBoxMain.Items.Add(f);
-                        }
+                        editPass = false;
+                    }
+                    refresher();
+                    if (editPass == false)
+                    {
+                        MessageBox.Show("Error, Please try again.");
+                        toolStripStatusLabel1.Text = "Search Failed";
+                        statusStrip1.Refresh();
+                    }
+                    if (editPass == true)
+                    {
                         toolStripStatusLabel1.Text = "Edit Completed";
                         statusStrip1.Refresh();
                     }
                 }
-                else
+                catch(ArgumentOutOfRangeException)
                 {
-                    MessageBox.Show("Error, Please try again.");
-                    toolStripStatusLabel1.Text = "Search Failed";
+                    MessageBox.Show("Error please select something to edit");
+                    toolStripStatusLabel1.Text = "OutOfRangeException";
                     statusStrip1.Refresh();
-                    return;
                 }
+                
             }
-            refresher();
             #endregion
         }
 
@@ -282,9 +299,9 @@ namespace AstroProApp
             SortFun();
             double midEx = (dataArray.Max() + dataArray.Min())/2;
             textBoxOut1.Text = $"Mid Extreme = {midEx.ToString("F")}";
+            refresher();
             toolStripStatusLabel1.Text = "Mid Extreme Calculation Complete";
             statusStrip1.Refresh();
-            refresher();
             #endregion
         }
 
@@ -333,9 +350,9 @@ namespace AstroProApp
                 // we don't care about lesser frequencies so we don't do anything here
                 // print the result(s)
                 textBoxOut1.Text = "Mode(s): " + string.Join(seperator, mostFrequentValues);
+                refresher();
                 toolStripStatusLabel1.Text = "Mode Calculation Complete";
                 statusStrip1.Refresh();
-                refresher();
                 #endregion
             }
         }
@@ -355,9 +372,9 @@ namespace AstroProApp
             }
             double mathAverage = mathSum / dataArray.Length;
             textBoxOut1.Text = $"Average = {mathAverage.ToString("F")}";
+            refresher();
             toolStripStatusLabel1.Text = "Average Calculation Complete";
             statusStrip1.Refresh();
-            refresher();
             #endregion
         }
 
@@ -372,9 +389,9 @@ namespace AstroProApp
             SortFun();
             double range = dataArray.Max() - dataArray.Min();
             textBoxOut1.Text = $"Range = {range.ToString("F")}";
+            refresher();
             toolStripStatusLabel1.Text = "Range Calculation Completed";
             statusStrip1.Refresh();
-            refresher();
             #endregion
         }
 
@@ -450,6 +467,11 @@ namespace AstroProApp
         }
 
         private void range_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
 
         }
