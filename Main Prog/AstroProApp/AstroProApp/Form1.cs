@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -263,34 +264,32 @@ namespace AstroProApp
 
         private void buttonMode_Click(object sender, EventArgs e)
         {
-            //Calculates the Mode of the array
-            #region
-            SortFun();
-            int mode = 0;
-            int max = 0;
-            var counts = new Dictionary<int, int>();
+            string seperator = ", ";
+            var mostFrequentValues = new HashSet<int>();
+            int maxCount = 0;
+            var frequencyTrack = new Dictionary<int, int>();
             foreach (int value in dataArray)
             {
-                if (counts.ContainsKey(value))
+                int curCount = 1;
+                if (frequencyTrack.TryGetValue(value, out int existingCount))
                 {
-                    counts[value]++;
+                    curCount = existingCount +1;
                 }
-                else
-                {
-                    counts.Add(value, 1);
-                }
-            }
-            foreach (KeyValuePair<int, int> count in counts)
-            {
-                if (count.Value > max)
-                    mode = count.Key;
-                max = count.Value;
-            }
-            textBoxOut1.Text = $"Mode is: {mode}";
-            refresher();
-            #endregion
-        }
+                frequencyTrack[value] = curCount;
 
+                if (curCount > maxCount)
+                {
+                    maxCount= curCount;
+                    mostFrequentValues.Clear();
+                    mostFrequentValues.Add(value);
+                }
+                else if (curCount == maxCount)
+                {
+                    mostFrequentValues.Add(value);
+                }
+                textBoxOut1.Text = "Mode(s): " + string.Join(seperator, mostFrequentValues);
+            }
+        }
         private void buttonAverage_Click(object sender, EventArgs e)
         {
             //Calculates the Average of the array
