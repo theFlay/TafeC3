@@ -31,6 +31,9 @@ namespace AstroProApp
         public Form1()
         {
             InitializeComponent();
+            toolStripStatusLabel1.Text = "Welcome, Please Generate";
+            statusStrip1.Refresh();
+
         }
         public void refresher()
         {
@@ -152,7 +155,8 @@ namespace AstroProApp
             #region
             if (hasGen == false)
             {
-                GenData();
+                MessageBox.Show("Please Generate Data First");
+                return;
             }
             refresher();
             toolStripStatusLabel1.Text = "Listbox and Array Sorted";
@@ -167,9 +171,13 @@ namespace AstroProApp
             #region
             if (hasGen == false)
             {
-                GenData();
+                MessageBox.Show("Please Generate Data First");
+                return;
             }
             refresher();
+            toolStripStatusLabel1.Text = "Searching";
+            statusStrip1.Refresh();
+
             if (string.IsNullOrWhiteSpace(textBoxMain.Text))
             {
                 MessageBox.Show("Not Found. Please enter value in text box");
@@ -220,7 +228,8 @@ namespace AstroProApp
                 bool editPass = false;
                 if (hasGen == false)
                 {
-                    GenData();
+                    MessageBox.Show("Please Generate Data First");
+                    return;
                 }
                 //updates the selected item with textbox.text
                 int selectedIndex;
@@ -247,6 +256,7 @@ namespace AstroProApp
                             {
                                 listBoxMain.Items.Add(f);
                             }
+                            editPass = true;
                         }
                     }
                     else
@@ -257,7 +267,7 @@ namespace AstroProApp
                     if (editPass == false)
                     {
                         MessageBox.Show("Error, Please try again.");
-                        toolStripStatusLabel1.Text = "Search Failed";
+                        toolStripStatusLabel1.Text = "Edit Failed";
                         statusStrip1.Refresh();
                     }
                     if (editPass == true)
@@ -294,7 +304,8 @@ namespace AstroProApp
             #region
             if (hasGen == false)
             {
-                GenData();
+                MessageBox.Show("Please Generate Data First");
+                return;
             }
             SortFun();
             double midEx = (dataArray.Max() + dataArray.Min())/2;
@@ -309,11 +320,12 @@ namespace AstroProApp
         {
             //Finds the Mode of the array
             #region
-            SortFun();
             if (hasGen == false)
             {
-                GenData();
+                MessageBox.Show("Please Generate Data First");
+                return;
             }
+            SortFun();
             string seperator = ", ";
             var mostFrequentValues = new HashSet<int>();
             int maxCount = 0;
@@ -353,8 +365,8 @@ namespace AstroProApp
                 refresher();
                 toolStripStatusLabel1.Text = "Mode Calculation Complete";
                 statusStrip1.Refresh();
-                #endregion
             }
+            #endregion
         }
         private void buttonAverage_Click(object sender, EventArgs e)
         {
@@ -362,7 +374,8 @@ namespace AstroProApp
             #region
             if (hasGen == false)
             {
-                GenData();
+                MessageBox.Show("Please Generate Data First");
+                return;
             }
             SortFun();
             double mathSum = 0;
@@ -384,7 +397,8 @@ namespace AstroProApp
             #region
             if (hasGen == false)
             {
-                GenData();
+                MessageBox.Show("Please Generate Data First");
+                return;
             }
             SortFun();
             double range = dataArray.Max() - dataArray.Min();
@@ -406,10 +420,11 @@ namespace AstroProApp
             #region
             if (hasGen == false)
             {
-                GenData();
+                MessageBox.Show("Please Generate Data First");
+                return;
             }
             bool searchBool = true;
-            toolStripStatusLabel1.Text = "Preforming Linear Search";
+            toolStripStatusLabel1.Text = "Searching";
             statusStrip1.Refresh();
             int.TryParse(textBoxMain.Text, out int finding);
             int leng = dataArray.Length;
