@@ -211,6 +211,65 @@ namespace AstroProApp
 
             #endregion
         }
+        private void buttonSeqSearch_Click(object sender, EventArgs e)
+        {
+            //Sequential Search of Items in array
+            #region
+            if (hasGen == false)
+            {
+                MessageBox.Show("Please Generate Data First");
+                return;
+            }
+            bool searchBool = true;
+            toolStripStatusLabel1.Text = "Searching";
+            statusStrip1.Refresh();
+            try
+            {
+                int finding = int.Parse(textBoxMain.Text);
+
+                int leng = dataArray.Length;
+
+                if (string.IsNullOrWhiteSpace(textBoxMain.Text))
+                {
+                    MessageBox.Show(" Can not search for null");
+                    toolStripStatusLabel1.Text = "Search Error";
+                    statusStrip1.Refresh();
+                    textBoxMain.Clear();
+                    this.ActiveControl = textBoxMain;
+                }
+                else
+                {
+                    SortFun();
+                    for (int i = 0; i < leng; i++)
+                    {
+                        if (dataArray[i] == finding)
+                        {
+                            searchBool = false;
+                        }
+                    }
+                    if (searchBool == false)
+                    {
+                        MessageBox.Show("Item is in list");
+                        toolStripStatusLabel1.Text = "Item Found";
+                        statusStrip1.Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item is NOT in list");
+                        toolStripStatusLabel1.Text = "Item Not Found";
+                        statusStrip1.Refresh();
+                    }
+                    toolStripStatusLabel1.Text = "Search Complete";
+                    statusStrip1.Refresh();
+                    this.ActiveControl = textBoxMain;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Must search for Int ");
+            }
+            #endregion
+        }
         private void textBoxMain_TextChanged(object sender, EventArgs e)
         {
 
@@ -294,7 +353,6 @@ namespace AstroProApp
             #endregion
         }
 
-
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -360,6 +418,7 @@ namespace AstroProApp
                     mostFrequentValues.Clear();
                     mostFrequentValues.Add(value);
                 }
+
                 // if the count matches the current max then we should
                 //add it as another winner
                 else if (curCount == maxCount)
@@ -368,11 +427,18 @@ namespace AstroProApp
                 }
                 // we don't care about lesser frequencies so we don't do anything here
                 // print the result(s)
-                textBoxOut1.Text = "Mode(s): " + string.Join(seperator, mostFrequentValues);
-                refresher();
-                toolStripStatusLabel1.Text = "Mode Calculation Complete";
-                statusStrip1.Refresh();
             }
+            if(mostFrequentValues.Count >= 24)
+            {
+                textBoxOut1.Text = "No Mode Found";
+            }
+            else
+            {
+                textBoxOut1.Text = "Mode(s): " + string.Join(seperator, mostFrequentValues);
+            }
+            toolStripStatusLabel1.Text = "Mode Calculation Complete";
+            statusStrip1.Refresh();
+            refresher();
             #endregion
         }
         private void buttonAverage_Click(object sender, EventArgs e)
@@ -421,58 +487,6 @@ namespace AstroProApp
 
         }
          
-        private void buttonSeqSearch_Click(object sender, EventArgs e)
-        {
-            //Sequential Search of Items in array
-            #region
-            if (hasGen == false)
-            {
-                MessageBox.Show("Please Generate Data First");
-                return;
-            }
-            bool searchBool = true;
-            toolStripStatusLabel1.Text = "Searching";
-            statusStrip1.Refresh();
-            int.TryParse(textBoxMain.Text, out int finding);
-            int leng = dataArray.Length;
-
-            if (string.IsNullOrWhiteSpace(textBoxMain.Text))
-            {
-                MessageBox.Show(" Can not search for null or string");
-                toolStripStatusLabel1.Text = "Search Error";
-                statusStrip1.Refresh();
-                textBoxMain.Clear();
-                this.ActiveControl = textBoxMain;
-            }
-            else
-            {
-                SortFun();
-                for (int i = 0; i < leng; i++)
-                {
-                    if (dataArray[i] == finding)
-                    {
-                        searchBool = false;
-                    }
-                }
-                if (searchBool == false)
-                {
-                    MessageBox.Show("Item is in list");
-                    toolStripStatusLabel1.Text = "Item Found";
-                    statusStrip1.Refresh();
-                }
-                else
-                {
-                    MessageBox.Show("Item is NOT in list");
-                    toolStripStatusLabel1.Text = "Item Not Found";
-                    statusStrip1.Refresh();
-                }
-                toolStripStatusLabel1.Text = "Search Complete";
-                statusStrip1.Refresh();
-                this.ActiveControl = textBoxMain;
-            }
-            #endregion
-        }
-
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
 
