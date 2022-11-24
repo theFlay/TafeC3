@@ -1,9 +1,9 @@
 Pseudo for finding the RANGE in an array
 
-Call SORT function to sort array
-set MIN as first number in array
-set MAX as last number in array
-Set RANGE as MAX minus MIN
+CALL SORT function to sort array
+SET MIN as first number in array
+SET MAX as last number in array
+SET RANGE as MAX minus MIN
 
-Output RANGE to Output Textbox
-Call Array Refresh Function
+OUTPUT RANGE to Output Textbox
+CALL Array Refresh Function

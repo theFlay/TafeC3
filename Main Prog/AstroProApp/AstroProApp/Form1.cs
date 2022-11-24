@@ -129,7 +129,7 @@ namespace AstroProApp
             //loops array and sets each index as a number then puts in in listbox
             for (int i = 0; i < dataArray.Length; i++)
             {
-                dataArray[i] = randNum.Next(0, 101);
+                dataArray[i] = randNum.Next(10, 91);
                 listBoxMain.Items.Add(dataArray[i]);
             }
             hasGen = true;
