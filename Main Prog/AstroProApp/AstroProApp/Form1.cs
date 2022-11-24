@@ -313,6 +313,12 @@ namespace AstroProApp
                             editPass = false;
                             return;
                         }
+                        if (int.Parse(textBoxMain.Text) <= 9 || (int.Parse(textBoxMain.Text) >= 100))
+                        {
+                            MessageBox.Show("Number Range is 10 to 90");
+                            editPass = false;
+                            return;
+                        }
                         else
                         {
                             listBoxMain.Items.Insert(selectedIndex, newItem);
