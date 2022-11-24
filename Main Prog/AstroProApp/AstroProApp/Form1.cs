@@ -177,31 +177,38 @@ namespace AstroProApp
             refresher();
             toolStripStatusLabel1.Text = "Searching";
             statusStrip1.Refresh();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(textBoxMain.Text))
+                {
+                    MessageBox.Show("Not Found. Please enter value in text box");
+                    toolStripStatusLabel1.Text = "Search Failed";
+                    statusStrip1.Refresh();
+                    return;
+                }
+                //Call the function and store the results in a variable
+                int key = int.Parse(textBoxMain.Text);
+                bool found = BinarySearchDisplay(dataArray, key, out int index);
+                if (found)
+                {
+                    MessageBox.Show($"Found. Index = {index} Value = {dataArray[index]}");
+                    toolStripStatusLabel1.Text = "Search Passed. Item Found";
+                    statusStrip1.Refresh();
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Not Found.");
+                    toolStripStatusLabel1.Text = "Search Passed. Item Not Found";
+                    statusStrip1.Refresh();
+                }
+                refresher();
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Please enter a valid Int to search for");
+            }
 
-            if (string.IsNullOrWhiteSpace(textBoxMain.Text))
-            {
-                MessageBox.Show("Not Found. Please enter value in text box");
-                toolStripStatusLabel1.Text = "Search Failed";
-                statusStrip1.Refresh();
-                return;
-            }
-            //Call the function and store the results in a variable
-            int key = int.Parse(textBoxMain.Text);
-            bool found = BinarySearchDisplay(dataArray, key, out int index);
-            if (found)
-            {
-                MessageBox.Show($"Found. Index = {index} Value = {dataArray[index]}");
-                toolStripStatusLabel1.Text = "Search Passed. Item Found";
-                statusStrip1.Refresh();
-                return;
-            }
-            else
-            {
-                MessageBox.Show("Not Found.");
-                toolStripStatusLabel1.Text = "Search Passed. Item Not Found";
-                statusStrip1.Refresh();
-            }
-            refresher();
             #endregion
         }
         private void textBoxMain_TextChanged(object sender, EventArgs e)
@@ -429,9 +436,9 @@ namespace AstroProApp
             int.TryParse(textBoxMain.Text, out int finding);
             int leng = dataArray.Length;
 
-            if (textBoxMain.Text == "")
+            if (string.IsNullOrWhiteSpace(textBoxMain.Text))
             {
-                MessageBox.Show(" Can not search for null");
+                MessageBox.Show(" Can not search for null or string");
                 toolStripStatusLabel1.Text = "Search Error";
                 statusStrip1.Refresh();
                 textBoxMain.Clear();
