@@ -270,10 +270,6 @@ namespace AstroProApp
             }
             #endregion
         }
-        private void textBoxMain_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -359,16 +355,6 @@ namespace AstroProApp
             #endregion
         }
 
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void textBoxOut1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonMidExtreme_Click(object sender, EventArgs e)
         {
             //calculates the Mid-Extreme of the array
@@ -434,7 +420,7 @@ namespace AstroProApp
                 // we don't care about lesser frequencies so we don't do anything here
                 // print the result(s)
             }
-            if(mostFrequentValues.Count >= 24)
+            if(mostFrequentValues.Count >= dataArray.Length)
             {
                 textBoxOut1.Text = "No Mode Found";
             }
@@ -488,34 +474,45 @@ namespace AstroProApp
             #endregion
         }
 
+        //unused methods
+        #region
         private void labelData_Click(object sender, EventArgs e)
         {
 
         }
-         
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
 
         }
-
         private void toolTip2_Popup(object sender, PopupEventArgs e)
         {
 
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
         private void range_Popup(object sender, PopupEventArgs e)
         {
 
         }
-
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
 
         }
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+        private void textBoxOut1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void textBoxMain_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
     }
 }
