@@ -392,7 +392,7 @@ namespace AstroProApp
             //sets the arrays for working in
             Dictionary<int, int> modecount = new Dictionary<int, int>();
             int[] modes = new int[24];
-            //find the mode(s) by saving each item in the array into a dictionary where the dic key is the value in the array and the dic value is the amount of times it occurred
+            //find the mode(s) by saving each item in the list into a dictionary where the dic key is the value in the list and the dic value is the amount of times it occurred
             foreach (int element in dataArray)
             {
                 if(modecount.ContainsKey(element))
@@ -400,7 +400,7 @@ namespace AstroProApp
                 else
                     modecount.Add(element, 1);
             }
-            //saves all modes to a new LIST for easy of printing
+            //saves all modes to a new LIST for ease of printing
             try
             {
                 int listItem = 1;
@@ -417,7 +417,7 @@ namespace AstroProApp
                 //outputs the modes (without the list nulls)
                 if (nonZeroes.Count() >= 24)
                 {
-                    //if the array is filled with none zero's then the whole array is the mode meaning there is no true mode.
+                    //if the list is filled with none zero's then the whole list is the mode meaning there is no true mode.
                     //this if is an error catch to stop that
                     textBoxOut1.Text = "No mode Found";
                 }
