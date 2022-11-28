@@ -5,9 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting;
+using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Markup;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
@@ -377,60 +381,57 @@ namespace AstroProApp
         {
             //Finds the Mode of the array
             #region
+            //checks if data has been Gen'd
             if (hasGen == false)
             {
                 MessageBox.Show("Please Generate Data First");
                 return;
             }
             SortFun();
-            string seperator = ", ";
-            var mostFrequentValues = new HashSet<int>();
-            int maxCount = 0;
-            // Prepare our frequency tracking dictionary, max frequency count, and frequent values setvar
-            var frequencyTrack = new Dictionary<int, int>();
-            foreach (int value in dataArray)
-            {
-                int curCount = 1;
-                // If we already know about this number then we should
-                // update the frequency to existing
-                if (frequencyTrack.TryGetValue(value, out int existingCount))
-                {
-                    curCount = existingCount +1;
-                }
-                // set the frequency for this value
-                frequencyTrack[value] = curCount;
 
-                // if the frequency is higher than the previously known value
-                // we have a new winner, so we should record the new frequency
-                // and clear the winning list of numbers before finally adding
-                // the current value
-                if (curCount > maxCount)
-                {
-                    maxCount= curCount;
-                    mostFrequentValues.Clear();
-                    mostFrequentValues.Add(value);
-                }
-
-                // if the count matches the current max then we should
-                //add it as another winner
-                else if (curCount == maxCount)
-                {
-                    mostFrequentValues.Add(value);
-                }
-                // we don't care about lesser frequencies so we don't do anything here
-                // print the result(s)
-            }
-            if(mostFrequentValues.Count >= dataArray.Length)
+            //sets the arrays for working in
+            Dictionary<int, int> modecount = new Dictionary<int, int>();
+            int[] modes = new int[24];
+            //find the mode(s) by saving each item in the array into a dictionary where the dic key is the value in the array and the dic value is the amount of times it occurred
+            foreach (int element in dataArray)
             {
-                textBoxOut1.Text = "No Mode Found";
+                if(modecount.ContainsKey(element))
+                    modecount[element]++;
+                else
+                    modecount.Add(element, 1);
             }
-            else
+            //saves all modes to a new LIST for easy of printing
+            try
             {
-                textBoxOut1.Text = "Mode(s): " + string.Join(seperator, mostFrequentValues);
+                int listItem = 1;
+                foreach (KeyValuePair<int, int> item in modecount)
+                {
+                    if (item.Value == modecount.Values.Max())
+                    {
+                        modes[listItem] = item.Key;
+                        listItem++;
+                    }
+                }
+                //sorts the array without zeros
+                var nonZeroes = modes.Where(x => x != 0);
+                //outputs the modes (without the list nulls)
+                if (nonZeroes.Count() >= 24)
+                {
+                    //if the array is filled with none zero's then the whole array is the mode meaning there is no true mode.
+                    //this if is an error catch to stop that
+                    textBoxOut1.Text = "No mode Found";
+                }
+                else
+                {
+                    //outputs the mode and its count
+                    textBoxOut1.Text = "Mode(s): " + String.Join(", ", nonZeroes) + " Count: " + modecount.Values.Max();
+                }
             }
-            toolStripStatusLabel1.Text = "Mode Calculation Complete";
-            statusStrip1.Refresh();
-            refresher();
+            catch (System.IndexOutOfRangeException)
+            {
+                //catchs out of range that happens when there is no mode
+                textBoxOut1.Text = "No mode Found";
+            }
             #endregion
         }
         private void buttonAverage_Click(object sender, EventArgs e)
