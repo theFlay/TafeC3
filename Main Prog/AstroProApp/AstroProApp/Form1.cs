@@ -129,7 +129,7 @@ namespace AstroProApp
             //loops array and sets each index as a number then puts in in listbox
             for (int i = 0; i < dataArray.Length; i++)
             {
-                dataArray[i] = randNum.Next(10, 91);
+                dataArray[i] = randNum.Next(10, 100);
                 listBoxMain.Items.Add(dataArray[i]);
             }
             hasGen = true;
@@ -444,9 +444,9 @@ namespace AstroProApp
             }
             SortFun();
             double mathSum = 0;
-            foreach (int i in dataArray)
+            foreach (int element in dataArray)
             {
-                mathSum = mathSum + i;
+                mathSum = mathSum + element;
             }
             double mathAverage = mathSum / dataArray.Length;
             textBoxOut1.Text = $"Average = {mathAverage.ToString("F")}";
